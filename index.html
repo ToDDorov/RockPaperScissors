@@ -6,94 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <script>
-        const posibilities = ["rock", "paper", "scissors"];
+    <div class="roundResult">
+        <span id="result"></span>
+    </div>
 
-        game();
+    <div class="scores">
+        <div id="playerScore">
+            <span>Player:</span>
+            <span id="playerWins">0</span>
+        </div>
+        <div id="botScore">
+            <span>Bot:</span>
+            <span id="botWins">0</span>
+        </div>
+    </div>
 
-        function computerPlay() {
-            return posibilities[Math.floor(Math.random() * posibilities.length)];
-        }
+    <div class="buttons">
+        <button data-key="rock">Rock</button>
+        <button data-key="paper">Paper</button>
+        <button data-key="scissors">Scissors</button>
+    </div>
 
-        function playRound(playerSelection, computerSelection) {
-            if (playerSelection == null) {
-                return;
-            }
-
-            let playerChoice = playerSelection.toLowerCase();
-
-            if (!posibilities.includes(playerChoice)) {
-                console.log(`Such choice doesnt exit: ${playerChoice}. Choose from ${posibilities}`);
-                return;
-            }
-
-            if (playerChoice == computerSelection) {
-                return "It\`s a Draw!";
-            } else {
-                switch (playerChoice) {
-                    case "rock":
-                        if (computerSelection == "scissors") {
-                            return "You Win! Rock beats Scissors";
-                        } else {
-                            return "You Lose! Paper beats Rock";
-                        }
-                        break;
-                    case "paper":
-                        if (computerSelection == "rock") {
-                            return "You Win! Paper beats Rock";
-                        } else {
-                            return "You Lose! Scissors beats Paper";
-                        }
-                        break;
-                    case "scissors":
-                        if (computerSelection == "paper") {
-                            return "You Win! Scissors beats Paper";
-                        } else {
-                            return "You Lose! Rock beats Scissors";
-                        }
-                        break;
-                }
-            }
-        }
-
-        function game() {
-            let playerWins = 0;
-            let botWins = 0;
-            let rounds = 5;
-
-            do {
-                const playerSelection = prompt("Choose between rock, paper and scissors: ");
-                const computerSelection = computerPlay();
-
-                const outcome = playRound(playerSelection, computerSelection);
-
-                if (outcome != null) {
-                    rounds--;
-
-                    console.log(outcome);
-
-                    if (outcome.includes("Win")) {
-                        playerWins++;
-                    } else if (outcome.includes("Lose")) {
-                        botWins++;
-                    }
-                }
-            } while (rounds != 0);
-
-            console.log(`Player wins ${playerWins} || Bot wins ${botWins}`);
-
-            if (playerWins > botWins) {
-                console.log("Player Won!");
-            } else if (playerWins < botWins) {
-                console.log("Bot Won!");
-            } else {
-                cosnole.log("Yay! Its a Draw.");
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
