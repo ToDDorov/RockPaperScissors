@@ -1,4 +1,4 @@
-# google-homepage
+# Rock Paper Scissors Game
 
 ## Assignment
 
