@@ -15,8 +15,22 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
     if (outcome != null) {
         if (outcome.includes("Win")) {
             playerWins++;
+
+            const playerScore = document.querySelector('#playerWins');
+            playerScore.addEventListener('transitionend', () => {
+                playerScore.classList.remove('change');
+            })
+            playerScore.textContent = playerWins.toString();
+            playerScore.classList.add('change');
         } else if (outcome.includes("Lose")) {
             botWins++;
+
+            const botScore = document.querySelector('#botWins');
+            botScore.addEventListener('transitionend', () => {
+                botScore.classList.remove('change');
+            })
+            botScore.textContent = botWins.toString();
+            botScore.classList.add('change');
         }
     }
 
@@ -33,11 +47,9 @@ buttons.forEach(button => button.addEventListener('click', (e) => {
     const roundResult = document.querySelector('#result');
     roundResult.textContent = result == null ? outcome : result;
 
-    const playerScore = document.querySelector('#playerWins');
-    playerScore.textContent = playerWins.toString();
-
-    const botScore = document.querySelector('#botWins');
-    botScore.textContent = botWins.toString();
+    if (result != null) {
+        roundResult.classList.add("resultAnimation");
+    }
 }));
 
 // game();

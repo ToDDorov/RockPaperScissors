@@ -1,4 +1,5 @@
-body,html {
+body,
+html {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
@@ -16,10 +17,27 @@ body,html {
     font-size: 3rem;
     text-align: center;
     padding: 70px 0px;
+    height: 5vh;
 }
 
 #result {
     padding: 30px;
+}
+
+.resultAnimation {
+    animation-duration: 1s;
+    animation-name: increaseFont;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes increaseFont {
+    from {
+        font-size: 3rem;
+    }
+    to {
+        font-size: 4rem;
+    }
 }
 
 .scores {
@@ -32,19 +50,33 @@ body,html {
     text-align: center;
 }
 
+.change {
+    font-size: 4rem;
+}
+
 #playerScore {
     padding: 20px;
+}
+
+#playerWins {
+    transition: font-size 0.5s;
 }
 
 #botScore {
     padding: 20px;
 }
 
+#botWins {
+    transition: font-size 0.5s;
+}
+
 button {
     margin: 10px;
-    font-size: 1.5rem;
+    font-size: 2rem;
     width: 10rem;
+    height: 4rem;
     text-align: center;
     color: white;
-    background: rgba(0,0,0,0.4);
+    background: rgba(2, 59, 73, 0.4);
+    border-radius: 5px;
 }
